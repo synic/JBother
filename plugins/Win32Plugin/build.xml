@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<project name="Win32Plugin" default="dist" basedir=".">
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+
+	<available file="../../JBother.jar" property="jar.available" />
+
+
+	<property name="debug" value="true" />
+
+	<target name="init">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<fail unless="jar.available">
+
+****************************************************************************
+../../JBother.jar is not available.  It is required to compile this plugin.
+Please build it first by typing cd ../../ &amp;&amp; ant &amp;&amp; cd -
+****************************************************************************
+		</fail>
+
+		<javac source="1.4" srcdir="${src}" deprecation="on" destdir="${build}" debug="${debug}">
+			<classpath>
+				<pathelement location="../../JBother.jar" />
+			</classpath>
+		</javac>
+
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete file="Win32Plugin.jar" />
+	</target>
+
+	<target name="cleanbuild">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="dist" depends="compile">
+		<delete file="Win32Plugin.jar" />
+		<copy todir="${build}/native">
+				<fileset dir="${src}/win32" />
+		</copy>
+		<copy todir="${build}/snoozesoft/systray4j" file="${src}/snoozesoft/systray4j/rocket.gif" />
+		<copy todir="${build}/snoozesoft/systray4j" file="${src}/snoozesoft/systray4j/systray4j.properties" />
+		<copy file="${src}/plugin.properties" tofile="${build}/plugin.properties" />
+		<jar destfile="Win32Plugin.jar" basedir="${build}" />
+	</target>
+
+
+</project>

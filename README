@@ -1,0 +1,23 @@
+JBother!!!!
+
+Yeah, it's just another Jabber client written in Java, but it's cooler than the old ones
+because I wrote it.
+
+Here's how you use it:
+
+1) You MUST have java 1.4.x or greater!  Java 1.3.x will not work!  Get it at java.sun.com/j2se
+2) You unzip the zip file.  I know you've already done that because you are reading this text.
+3) Run JBother.jar like this:  java -jar JBother.jar, or in Windows just double click on it.
+4) Create an account on jabber.org or linuxhelp.homeunix.com if you haven't already got a jabber account
+5) Have fun!
+
+
+If you want to build it from source, you'll need ant.  Just type "ant" in the base
+directory of the zip file. It will create JBother.jar, which you can run.
+
+
+Thanks,
+synic
+
+If you need to contact me, my jabber ID is synic@jbother.org, and my email address is arolsen@gmail.com
+I can also be found on the mighty fine irc channel #linuxhelp on irc.chatjunkies.org

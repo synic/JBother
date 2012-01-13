@@ -1,0 +1,41 @@
+Adam Olsen
+   Email: synic@jbother.org
+   JID: synic@jbother.org
+   Programmer
+
+Yury Soldak (tail)
+   JID: tail@jabber.spbu.ru
+   Programmer
+
+Thorsten Panknin
+   JID: stellaris@i-pobox.net
+   Logo Designer
+
+Chris King
+   JID: chris@devfull.com
+   Programmer
+
+Andrey Zakirov
+   JID: monstahkillah@xmpp.ru
+   Programmer
+
+Lukasz Wiechec
+   JID: coquelicot@chrome.pl
+   Programmer
+
+Translations:
+   Carlos A. R. de Souza    	pt_BR
+   Jaan Klatt               	de_DE
+   Thorsten Panknin				de_DE
+   Yury Soldak              	ru_RU
+   Xianonan Zhang		zh_CN
+   Jose M. U. Ortiz				es_ES
+
+The following software makes JBother
+possible:
+
+dotuseful: http://dotuseful.sourceforge.net
+smack: http://jivesoftware.org/smack
+java: http://java.sun.com
+jfree: http://www.jfree.org/jcommon
+infonode: http://www.infonode.net

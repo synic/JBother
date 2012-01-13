@@ -1,0 +1,19 @@
+<launch4jConfig>
+  <headerType>0</headerType>
+  <jar>/home/synic/projects/JBother/JBother.jar</jar>
+  <outfile>JBother.exe</outfile>
+  <errTitle></errTitle>
+  <jarArgs></jarArgs>
+  <chdir></chdir>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <icon>/home/synic/projects/JBother/src/images/icon.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.4.0</minVersion>
+    <maxVersion></maxVersion>
+    <initialHeapSize>0</initialHeapSize>
+    <maxHeapSize>0</maxHeapSize>
+    <args></args>
+  </jre>
+</launch4jConfig>

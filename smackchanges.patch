@@ -1,0 +1,139 @@
+*** source/org/jivesoftware/smack/AccountManager.java.orig	2005-06-16 09:04:21.000000000 -0600
+--- source/org/jivesoftware/smack/AccountManager.java	2005-06-16 09:09:09.355081440 -0600
+***************
+*** 187,194 ****
+          Registration reg = new Registration();
+          reg.setType(IQ.Type.SET);
+          reg.setTo(connection.getHost());
+!         reg.setUsername(username);
+!         reg.setPassword(password);
+          reg.setAttributes(attributes);
+          PacketFilter filter = new AndFilter(new PacketIDFilter(reg.getPacketID()),
+                  new PacketTypeFilter(IQ.class));
+--- 187,194 ----
+          Registration reg = new Registration();
+          reg.setType(IQ.Type.SET);
+          reg.setTo(connection.getHost());
+!         attributes.put("username",username);
+!         attributes.put("password",password);
+          reg.setAttributes(attributes);
+          PacketFilter filter = new AndFilter(new PacketIDFilter(reg.getPacketID()),
+                  new PacketTypeFilter(IQ.class));
+***************
+*** 217,224 ****
+          Registration reg = new Registration();
+          reg.setType(IQ.Type.SET);
+          reg.setTo(connection.getHost());
+!         reg.setUsername(StringUtils.parseName(connection.getUser()));
+!         reg.setPassword(newPassword);
+          PacketFilter filter = new AndFilter(new PacketIDFilter(reg.getPacketID()),
+                  new PacketTypeFilter(IQ.class));
+          PacketCollector collector = connection.createPacketCollector(filter);
+--- 217,226 ----
+          Registration reg = new Registration();
+          reg.setType(IQ.Type.SET);
+          reg.setTo(connection.getHost());
+!         HashMap map = new HashMap();
+!         map.put("username",StringUtils.parseName(connection.getUser()));
+!         map.put("password",newPassword);
+!         reg.setAttributes(map);
+          PacketFilter filter = new AndFilter(new PacketIDFilter(reg.getPacketID()),
+                  new PacketTypeFilter(IQ.class));
+          PacketCollector collector = connection.createPacketCollector(filter);
+*** source/org/jivesoftware/smack/PacketReader.java.orig	2005-06-16 09:04:28.000000000 -0600
+--- source/org/jivesoftware/smack/PacketReader.java	2005-06-16 09:06:18.708023736 -0600
+***************
+*** 497,511 ****
+          while (!done) {
+              int eventType = parser.next();
+              if (eventType == XmlPullParser.START_TAG) {
+-                 if (parser.getName().equals("username")) {
+-                     registration.setUsername(parser.nextText());
+-                 }
+-                 else if (parser.getName().equals("password")) {
+-                     registration.setPassword(parser.nextText());
+-                 }
+                  // Else if any other element that's in the jabber:iq:register namespace,
+                  // attempt to parse it if it's in the form <name>value</name>.
+!                 else if (parser.getNamespace().equals("jabber:iq:register")) {
+                      String name = parser.getName();
+                      String value = "";
+                      if (fields == null) {
+--- 497,505 ----
+          while (!done) {
+              int eventType = parser.next();
+              if (eventType == XmlPullParser.START_TAG) {
+                  // Else if any other element that's in the jabber:iq:register namespace,
+                  // attempt to parse it if it's in the form <name>value</name>.
+!                 if (parser.getNamespace().equals("jabber:iq:register")) {
+                      String name = parser.getName();
+                      String value = "";
+                      if (fields == null) {
+*** source/org/jivesoftware/smack/packet/Registration.java.orig	2005-06-16 09:04:32.000000000 -0600
+--- source/org/jivesoftware/smack/packet/Registration.java	2005-06-16 09:07:33.522650184 -0600
+***************
+*** 48,95 ****
+   */
+  public class Registration extends IQ {
+  
+-     private String username = null;
+-     private String password = null;
+      private String instructions = null;
+      private Map attributes = null;
+  
+      /**
+-      * Returns the username, or <tt>null</tt> if no username has ben set.
+-      *
+-      * @return the username.
+-      */
+-     public String getUsername() {
+-         return username;
+-     }
+- 
+-     /**
+-      * Sets the username.
+-      *
+-      * @param username the username.
+-      */
+-     public void setUsername(String username) {
+-         this.username = username;
+-     }
+- 
+-     /**
+-      * Returns the password, or <tt>null</tt> if no password has been set.
+-      *
+-      * @return the password.
+-      */
+-     public String getPassword() {
+-         return password;
+-     }
+- 
+-     /**
+-      * Sets the password.
+-      *
+-      * @param password the password.
+-      */
+-     public void setPassword(String password) {
+-         this.password = password;
+-     }
+- 
+-     /**
+       * Returns the registration instructions, or <tt>null</tt> if no instructions
+       * have been set. If present, instructions should be displayed to the end-user
+       * that will complete the registration process.
+--- 48,57 ----
+***************
+*** 130,141 ****
+      public String getChildElementXML() {
+          StringBuffer buf = new StringBuffer();
+          buf.append("<query xmlns=\"jabber:iq:register\">");
+-         if (username != null) {
+-             buf.append("<username>").append(username).append("</username>");
+-         }
+-         if (password != null) {
+-             buf.append("<password>").append(password).append("</password>");
+-         }
+          if (instructions != null) {
+              buf.append("<instructions>").append(instructions).append("</instructions>");
+          }
+--- 92,97 ----

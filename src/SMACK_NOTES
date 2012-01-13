@@ -1,0 +1,4 @@
+NOTES FOR CHANGES TO SMACK
+
+Make PacketReader create attributes for Register packet even if the value is empty
+Make RosterListener case insensitive - and make it not parse bare addresses for transports

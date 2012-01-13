@@ -1,0 +1,79 @@
+JBother: A groovy Jabber client
+
+---- v0.8.7  (05/22/2005) ------------------------------------------------------
+
+	* Partial file transfer support (Lukasz Wiechec)
+	* Tab improvements (Adam Olsen)
+	* jabber:iq:last support (Andrey Zakirov)
+	* New menu layout (Andrey Zakirov)
+	* Roster toggle buttons (Adam Olsen)
+	* More notification options (Adam Olsen)
+	* improved message event support (Andrey Zakirov)
+	* jabber:iq:search (Lukasz Wiechec)
+
+---- v0.8.6  (03/25/2005) ------------------------------------------------------
+
+	* Full Multi User Chat support (Adam Olsen)
+	* Message Event support (typing notification) (Adam Olsen)
+	* GnuPG Support (Andrey Zakirov)
+	* Optional Single window mode (docked roster) (Adam Olsen)
+	* System tray plugin for linux (Yury Soldak)
+	* MUC autojoin (Adam Olsen)
+	* VCard support (Adam Olsen)
+	* Improved Service Discovery (Adam Olsen)
+	* Gateway type icons (Adam Olsen)
+	* Saved Presence messages (Chris King)
+	* Many many many bug fixes
+	* XML Console (Andrey Zakirov)
+
+---- v0.8.5  (12/28/2004) ------------------------------------------------------
+
+	* Plugin Support and API (Adam Olsen)
+	* Profile Manager (Adam Olsen)
+	* Auto Reconnect on Disconnect (Adam Olsen)
+	* Optional Tabbed Window for All Conversations (Adam Olsen)
+	* Emoticon Theme Switcher (Adam Olsen)
+	* Emoticon Chooser (Adam Olsen)
+	* de_DE Translation (Jaan Klatt)
+	* Windows Plugin (Chris King)
+	* OS X Plugin (Adam Olsen)
+	* Look And Feel Plugin (Adam Olsen)
+	* New JBother Logo Art (Thorsten Panknin)
+	* jabber:iq:time Support (Adam Olsen)
+	* User Information Viewer (Adam Olsen)
+	* User Can View Buddy List and Preferences Without Signing in
+	  (Adam Olsen)
+
+---- v0.8.4b (09/01/2004) ------------------------------------------------------
+
+	* Added Disco Service Discovery Browser	(Adam Olsen)
+	* Better resource management	(Adam Olsen)
+	* Group Chat Tab completion 	(Yury Soldak)
+	* Group Chat Nickname highlighting	(Yury Soldak)
+	* Group Chat Highlighing sounds	(Adam Olsen)
+	* Multi language support	(Adam Olsen)
+	* ru_RU translation	(Yury Soldak)
+	* pt_BR translation	(Carlos A. R. de Souza)
+	* CTRL+[1-9] Tab switching in Group Chat	(Yury Soldak)
+	* New HEADLINE message window	(Yury Soldak)
+	* Create Account feature now grabs required fields from server
+	  (Adam Olsen)
+	* Mac OS/X event notification improvements (dock icon bounces correctly)
+	  (Adam Olsen)
+	* Ability to use user defined status icon themes
+	  (in ~/.jbother/themes/statusicons)	(Yury Soldak)
+	* Ability to choose custom fonts for conversations and interface
+	  (Adam Olsen)
+	* Automatic Idle Away option (idleness is only tracked for JBother use,
+	  since the JRE provides no cross-platform method to do this)
+	  (Adam Olsen)
+	* Ability to block users/privacy manager	(Adam Olsen)
+	* New JBother Logo art	(Jenn Hartnoll)
+	* Size preferences are saved when you resize a conversation window and/or
+	  the groupchat window	(Adam Olsen)
+	* jabber:iq:version support (the correct way) (Adam Olsen)
+
+
+---- v0.8.3 (04/16/2004) ------------------------------------------------------
+
+	* Changelog had not yet been created

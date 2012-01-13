@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<project name="OSXPlugin" default="dist" basedir=".">
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+
+	<available file="../../JBother.jar" property="jar.available" />
+	<condition property="isOSX">
+		<and>
+			<os family="mac" />
+			<os family="unix" />
+		</and>
+	</condition>
+
+	<property name="debug" value="true" />
+
+	<target name="init">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<fail unless="jar.available">
+
+****************************************************************************
+../../JBother.jar is not available.  It is required to compile this plugin.
+Please build it first by typing cd ../../ &amp;&amp; ant &amp;&amp; cd -
+****************************************************************************
+		</fail>
+
+		<fail unless="isOSX">
+****************************************************************************
+You can only compile this plugin in OS X.
+****************************************************************************
+		</fail>
+
+		<javac srcdir="${src}" deprecation="on" destdir="${build}" debug="${debug}">
+			<classpath>
+				<pathelement location="../../JBother.jar" />
+				<pathelement location="/System/Library/Java/" />
+			</classpath>
+		</javac>
+
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete file="OSXPlugin.jar" />
+	</target>
+
+	<target name="cleanbuild">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="dist" depends="compile">
+		<delete file="OSXPlugin.jar" />
+		<copy file="${src}/plugin.properties" tofile="${build}/plugin.properties" />
+		<jar destfile="OSXPlugin.jar" basedir="${build}" />
+	</target>
+
+
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://www.yourdomain.net/jbother/" href="%jnlpfile%">
+  <information>
+    <title>Kiosk Chat Room</title>
+    <vendor>Adam Olsen (synic)</vendor>
+    <homepage href="http://www.jbother.org"/>
+    <description>JBother is a Jabber client written in Java</description>
+  </information>
+  <security>
+      <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.4+"/>
+    <jar href="JBother.jar"/>
+  </resources>
+  <application-desc main-class="com.valhalla.jbother.JBother">
+  	<argument>webstart</argument>
+	<argument>kiosk=%roomname%</argument>
+	<argument>kiosk_nick=%nickname%</argument>
+	<argument>kiosk_user=%username%</argument>
+	<argument>kiosk_pass=%password%</argument>
+	<argument>kiosk_roompass=%roompass%</argument>
+	<argument>kiosk_roomservice=%roomservice%</argument>
+  </application>
+</jnlp>

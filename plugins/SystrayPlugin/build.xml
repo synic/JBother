@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<project name="SystrayPlugin" default="dist" basedir=".">
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+
+	<available file="../../JBother.jar" property="jar.available" />
+
+
+	<property name="debug" value="true" />
+
+	<target name="init">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<fail unless="jar.available">
+
+****************************************************************************
+../../JBother.jar is not available.  It is required to compile this plugin.
+Please build it first by typing cd ../../ &amp;&amp; ant &amp;&amp; cd -
+****************************************************************************
+		</fail>
+
+		<javac source="1.4" srcdir="${src}" deprecation="off" destdir="${build}" debug="${debug}">
+			<classpath>
+				<pathelement location="../../JBother.jar" />
+				<!--pathelement location="lib/jdic.jar" /-->
+			</classpath>
+		</javac>
+
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete file="SystrayPlugin.jar" />
+	</target>
+
+	<target name="cleanbuild">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="dist" depends="clean,compile">
+		<delete file="SystrayPlugin.jar" />
+		<copy todir="${build}/native">
+			<fileset dir="native/linux" />
+			<fileset dir="native/win32" />
+		</copy>
+		<copy file="${src}/plugin.properties" tofile="${build}/plugin.properties" />
+		<jar destfile="SystrayPlugin.jar" basedir="${build}" />
+	</target>
+
+</project>
